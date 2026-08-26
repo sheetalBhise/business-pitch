@@ -1,0 +1,154 @@
+/* -----------------------------------------------------------------
+   Radar mechanic — SVG classes (ported from Metro+ service styles).
+   Reads palette vars (--amber, --blue, --blue-2, --dark-paper, --mono,
+   --serif) declared on the .mn root in narration.css.
+   ----------------------------------------------------------------- */
+
+.svc-radar {
+  margin: 0;
+  width: 100%;
+}
+
+.svc-radar svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.svc-radar__zone--q { fill: rgba(255, 181, 71, 0.06); }
+.svc-radar__zone--h { fill: rgba(255, 181, 71, 0.12); }
+.svc-radar__zone--f { fill: rgba(255, 181, 71, 0.22); }
+
+.svc-radar__ring {
+  fill: none;
+  stroke: rgba(255, 181, 71, 0.38);
+  stroke-width: 1;
+  stroke-dasharray: 2 5;
+}
+
+.svc-radar__spoke {
+  stroke: rgba(243, 236, 219, 0.08);
+  stroke-width: 1;
+}
+
+.svc-radar__sweep { fill: rgba(255, 181, 71, 0.1); }
+
+.svc-radar__sweep-g {
+  transform-box: view-box;
+  transform-origin: 230px 205px;
+  animation: radar-sweep 14s linear infinite;
+}
+
+@keyframes radar-sweep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.svc-radar__tick {
+  stroke: rgba(243, 236, 219, 0.32);
+  stroke-width: 1;
+}
+
+.svc-radar__meter {
+  fill: rgba(243, 236, 219, 0.7);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.svc-radar__frac {
+  font-family: var(--serif);
+  text-anchor: middle;
+  font-weight: 500;
+}
+
+.svc-radar__frac--q { fill: rgba(255, 181, 71, 0.55); font-size: 22px; }
+.svc-radar__frac--h { fill: rgba(255, 181, 71, 0.82); font-size: 26px; }
+.svc-radar__frac--f { fill: var(--amber); font-size: 30px; }
+
+.svc-radar__dispatch {
+  stroke: var(--blue);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+  opacity: 0.6;
+}
+
+.svc-radar__station rect {
+  fill: rgba(77, 139, 247, 0.14);
+  stroke: var(--blue);
+  stroke-width: 1;
+}
+
+.svc-radar__station-t {
+  fill: #cde0ff;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-anchor: middle;
+}
+
+.svc-radar__dot--q { fill: var(--amber); fill-opacity: 0.42; }
+.svc-radar__dot--h { fill: var(--amber); fill-opacity: 0.72; }
+.svc-radar__dot--f { fill: var(--amber); fill-opacity: 1; }
+
+.svc-radar__pole circle { fill: var(--dark-paper); }
+.svc-radar__pole .svc-radar__pole-core { fill: #0e1116; }
+
+.svc-radar__pole-t {
+  fill: var(--dark-paper);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-anchor: middle;
+}
+
+.svc-radar__rickshaw {
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .svc-radar__sweep-g { animation: none; }
+}
+
+/* Chips ---------------------------------------------------------------- */
+
+.svc-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  border: 1px solid rgba(243, 236, 219, 0.18);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(243, 236, 219, 0.82);
+}
+
+.svc-chip__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(243, 236, 219, 0.35);
+  transition: background 0.3s ease;
+}
+
+.svc-chip__status {
+  color: rgba(243, 236, 219, 0.55);
+}
+
+.svc-chip[data-status="Ready"] { border-color: rgba(255, 181, 71, 0.5); }
+.svc-chip[data-status="Ready"] .svc-chip__dot { background: rgba(255, 181, 71, 0.7); }
+.svc-chip[data-status="Ready"] .svc-chip__status { color: var(--amber); }
+
+.svc-chip[data-status="Dispatched"],
+.svc-chip[data-status="Arriving"] { border-color: rgba(77, 139, 247, 0.55); }
+.svc-chip[data-status="Dispatched"] .svc-chip__dot,
+.svc-chip[data-status="Arriving"] .svc-chip__dot { background: var(--blue-2); }
+.svc-chip[data-status="Dispatched"] .svc-chip__status,
+.svc-chip[data-status="Arriving"] .svc-chip__status { color: var(--blue-2); }
+
+.svc-chip[data-status="At pole"] { border-color: rgba(255, 181, 71, 0.7); }
+.svc-chip[data-status="At pole"] .svc-chip__dot { background: var(--amber); }
+.svc-chip[data-status="At pole"] .svc-chip__status { color: var(--amber); }
