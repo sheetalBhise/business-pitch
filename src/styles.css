@@ -102,8 +102,6 @@ body {
   margin-top: 34px;
   display: grid;
   gap: 20px;
-  align-items: center;
-  grid-template-columns: 0.9fr 1.4fr;
 }
 .pd-players__hub {
   display: flex;
@@ -419,9 +417,9 @@ body {
   text-align: center;
 }
 .pd-app__frame {
-  width: min(1000px, 100%);
-  aspect-ratio: 16 / 9;
-  max-height: 64vh;
+  width: min(340px, 82vw);
+  aspect-ratio: 320 / 620;
+  max-height: 72vh;
   margin-top: 26px;
   border: 1px solid var(--rule-strong);
   border-radius: 14px;

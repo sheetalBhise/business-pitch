@@ -67,9 +67,9 @@ const SCENES = [
     kind: "brief",
     eyebrow: "What we are actually solving",
     label: "The problem, stated",
-    tag: "Reframed brief",
+    tag: "",
     quote:
-      "Design the end-to-end last-mile service that makes the metro a credible daily commute in Mumbai. The buggy is one mode; the pole is one touchpoint; predictability is the product.",
+      "Design the end-to-end last-mile service that makes the metro a credible daily commute in Mumbai.",
     scope: "A service — not a device.",
     variant: "revised",
   },
@@ -100,32 +100,69 @@ const SCENES = [
       },
     ],
   },
+
+  // ── 4. Personas (directly after Players) ──────────────────────────────
+  { id: "ch4", kind: "chapter", index: "04", title: "The people", kicker: "Two personas the service must serve" },
   {
-    id: "2.issues",
-    kind: "issues",
-    eyebrow: "Their issues",
-    headline: "Every player is paying for the same gap",
-    personas: [
-      {
-        tag: "Local passengers",
-        initial: "P",
-        name: "Samaiyra",
-        meta: "The commuter",
-        line: "Commutes daily; decisions made in real time by time, comfort and cost. Mode-hops between metro, cab and shared auto.",
-        wants: ["A predictable commute", "One plan, one price"],
-        pains: ["Traffic uncertainty", "Auto rejections at peak"],
-      },
-      {
-        tag: "Shared shuttle drivers",
-        initial: "D",
-        name: "Ramesh",
-        meta: "The driver",
-        line: "His day revolves around a stable income, reading demand, and balancing 12–16 hour shifts with family.",
-        wants: ["A stable livelihood", "A transparent demand signal"],
-        pains: ["Empty runs eat the margin", "No line-of-sight into demand"],
-      },
+    id: "4.passenger",
+    kind: "personaFull",
+    variant: "passenger",
+    archetype: "9-to-5 Gladiator",
+    initial: "S",
+    name: "Samaiyra",
+    meta: "28 · Product Manager · Infosys · Mumbai",
+    bio: "Travels daily for work. Her commute decisions are driven by time, comfort and cost, mode-hopping between metro, cab and auto depending on urgency and convenience.",
+    quote: "The hardest thing to plan in my day isn't work — it's reaching work.",
+    pains: [
+      "Traffic uncertainty and delays",
+      "Expensive, recurring commute costs",
+      "Last-mile issues — auto rejections and waiting time",
+      "A tiring daily travel experience",
+    ],
+    needs: [
+      "A reliable, predictable commute",
+      "Comfortable yet cost-effective options",
+      "Visibility into travel time and traffic",
+      "A smooth, hassle-free journey",
+    ],
+    sliders: [
+      { left: "Planned commute", right: "Spontaneous travel", value: 24 },
+      { left: "Cost conscious", right: "Comfort driven", value: 52 },
+      { left: "Okay with uncertainty", right: "Needs predictability", value: 82 },
+      { left: "Single transport mode", right: "Multi-mode traveller", value: 78 },
     ],
   },
+  {
+    id: "4.driver",
+    kind: "personaFull",
+    variant: "driver",
+    archetype: "Stability Seeker",
+    initial: "R",
+    name: "Ramesh Gupta Ji",
+    meta: "30 · Rickshaw driver · Mumbai",
+    bio: "His life revolves around earning a stable income, reading commuter demand, and balancing long shifts with family. He takes pride in his work and aspires to do better.",
+    quote: "सवारियों की इज़्ज़त अपनी जगह, लेकिन पीक आवर्स में कमाई से समझौता… अपनी डिक्शनरी में नहीं है।",
+    quoteLang: "hi",
+    pains: [
+      "Income loss during illness or vehicle issues",
+      "High dependency on daily earnings",
+      "Limited earning outside fixed routes",
+    ],
+    needs: [
+      "Stable, predictable daily income",
+      "Continuous ride demand through the day",
+      "Financial security during downtime",
+      "Incentives and earning benefits",
+      "Flexible earning across the day",
+    ],
+    sliders: [
+      { left: "Stability driven", right: "Experimental", value: 20 },
+      { left: "Income predictability", right: "High-profit seeking", value: 30 },
+      { left: "Fixed routine", right: "Flexible working style", value: 50 },
+      { left: "Demand aware", right: "Demand dependent", value: 22 },
+    ],
+  },
+
   {
     id: "2.metro",
     kind: "pullquote",
@@ -178,91 +215,30 @@ const SCENES = [
   },
 
   // ── 4. Personas ────────────────────────────────────────────────────────
-  { id: "ch4", kind: "chapter", index: "04", title: "The people", kicker: "Two personas the service must serve" },
-  {
-    id: "4.passenger",
-    kind: "personaFull",
-    variant: "passenger",
-    archetype: "9-to-5 Gladiator",
-    initial: "S",
-    name: "Samaiyra",
-    meta: "28 · Product Manager · Infosys · Mumbai",
-    bio: "Travels daily for work. Her commute decisions are driven by time, comfort and cost, mode-hopping between metro, cab and auto depending on urgency and convenience.",
-    quote: "The hardest thing to plan in my day isn’t work — it’s reaching work.",
-    pains: [
-      "Traffic uncertainty and delays",
-      "Expensive, recurring commute costs",
-      "Last-mile issues — auto rejections and waiting time",
-      "A tiring daily travel experience",
-    ],
-    needs: [
-      "A reliable, predictable commute",
-      "Comfortable yet cost-effective options",
-      "Visibility into travel time and traffic",
-      "A smooth, hassle-free journey",
-    ],
-    sliders: [
-      { left: "Planned commute", right: "Spontaneous travel", value: 24 },
-      { left: "Cost conscious", right: "Comfort driven", value: 52 },
-      { left: "Okay with uncertainty", right: "Needs predictability", value: 82 },
-      { left: "Single transport mode", right: "Multi-mode traveller", value: 78 },
-    ],
-  },
-  {
-    id: "4.driver",
-    kind: "personaFull",
-    variant: "driver",
-    archetype: "Stability Seeker",
-    initial: "R",
-    name: "Ramesh Gupta Ji",
-    meta: "30 · Rickshaw driver · Mumbai",
-    bio: "His life revolves around earning a stable income, reading commuter demand, and balancing long shifts with family. He takes pride in his work and aspires to do better.",
-    quote: "सवारियों की इज़्ज़त अपनी जगह, लेकिन पीक आवर्स में कमाई से समझौता… अपनी डिक्शनरी में नहीं है।",
-    quoteLang: "hi",
-    pains: [
-      "Income loss during illness or vehicle issues",
-      "High dependency on daily earnings",
-      "Limited earning outside fixed routes",
-    ],
-    needs: [
-      "Stable, predictable daily income",
-      "Continuous ride demand through the day",
-      "Financial security during downtime",
-      "Incentives and earning benefits",
-      "Flexible earning across the day",
-    ],
-    sliders: [
-      { left: "Stability driven", right: "Experimental", value: 20 },
-      { left: "Income predictability", right: "High-profit seeking", value: 30 },
-      { left: "Fixed routine", right: "Flexible working style", value: 50 },
-      { left: "Demand aware", right: "Demand dependent", value: 22 },
-    ],
-  },
-
   // ── 5. Conclusion — humans are unpredictable ───────────────────────────
-  { id: "ch5", kind: "chapter", index: "05", title: "Humans are unpredictable", kicker: "The variable no model controls" },
-  {
-    id: "5.human",
-    kind: "whatif",
-    eyebrow: "The human factor",
-    lead: "Human beings are the unpredictable variable.",
-    items: [
-      "You book your ride, but a broken elevator delays you at your pickup point.",
-      "You head downstairs — and remember you didn’t kiss your kid goodbye.",
-      "You left without your work laptop. (More often than you’d think.)",
-    ],
-    close: "How do we still give them predictability?",
-  },
+  { id: "ch5", kind: "chapter", index: "05", title: "The variable no model controls" },
   {
     id: "5.oneline",
     kind: "problemPanel",
     mark: "The problem, in one line",
     lines: [
-      "Drivers can’t estimate the scale of demand.",
-      "Passengers don’t know how long to wait.",
+      "Drivers can't estimate the scale of demand.",
+      "Passengers don't know how long to wait.",
     ],
     foot:
       "Between them sits a rule-of-the-jungle city and an unregulated web of shared-mobility hacks. Both sides pay for the gap in time, money and dignity. Everything that follows is one attempt to close it.",
+  },
+  {
+    id: "5.human",
+    kind: "whatif",
+    eyebrow: "",
+    lead: "Human beings are unpredictable.",
+    items: [
+      "You book your ride, but a broken elevator delays you at your pickup point.",
+      "You head downstairs — and remember you didn't kiss your kid goodbye.",
+      "You left without your work laptop. (More often than you'd think.)",
+    ],
+    close: "How do we still give them predictability?",
   },
 
   // ── 6. Pole planning ───────────────────────────────────────────────────
@@ -277,12 +253,9 @@ const SCENES = [
   },
   {
     id: "6.routes",
-    kind: "artifact",
+    kind: "statement",
     eyebrow: "Route predictability",
     headline: "To promise predictability, first define the routes",
-    body:
-      "We studied the routes the campus commute already runs and found they overlap. Around one metro station, ~25 poles share overlapping segments. It looks like this.",
-    artifact: { label: "Physical route model", src: IMG("physical-route-model.png") },
   },
   {
     id: "6.map",
@@ -297,15 +270,6 @@ const SCENES = [
     artifact: { label: "A pole surges", src: IMG("pole-surge-state.png") },
     caption:
       "Say a pole suddenly sees a surge and tells the station. That pole’s vehicle is already full — so why should it travel on to Pole 4 and Pole 6?",
-  },
-  {
-    id: "6.whatsapp",
-    kind: "artifact",
-    eyebrow: "How it’s handled today",
-    headline: "A WhatsApp group",
-    body:
-      "Today, drivers still follow the fixed route. They flag a surge to supervisors in a WhatsApp group — a completely unorganised method.",
-    artifact: { label: "Artifact · driver WhatsApp group", src: IMG("whatsapp-group.png"), kind: "screenshot" },
   },
   {
     id: "6.system",
@@ -488,7 +452,6 @@ function SceneBody({ scene, radarRef }) {
     case "chapter":
       return (
         <div className="pd-chapter">
-          <span className="pd-chapter__index">{scene.index}</span>
           <h2 className="pd-chapter__title">{scene.title}</h2>
           {scene.kicker && <p className="pd-chapter__kicker">{scene.kicker}</p>}
         </div>
@@ -516,10 +479,6 @@ function SceneBody({ scene, radarRef }) {
           <p className="mn-eyebrow">{scene.eyebrow}</p>
           <h2 className="mn-h2">{scene.headline}</h2>
           <div className="pd-players">
-            <div className="pd-players__hub">
-              <span className="pd-players__hub-glyph" aria-hidden="true">◎</span>
-              <span>{scene.hub}</span>
-            </div>
             <div className="pd-players__ring">
               {scene.players.map((p) => (
                 <article className="pd-player" key={p.name}>
@@ -735,7 +694,6 @@ function SceneBody({ scene, radarRef }) {
               title="Metro+ application prototype"
               src={scene.src}
               allowFullScreen
-              loading="lazy"
             />
           </div>
           <p className="mn-caption">
